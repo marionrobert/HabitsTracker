@@ -73,7 +73,7 @@ def delete_pixel():
 app_on = True
 
 while app_on:
-    action = input("What action do you want to do ? \nAdd a new pixel for today: type 'add'. \nUpdate a pixel: type 'update'. \nDelete a pixel: type 'delete'.\n --> ").lower()
+    action = input("What action do you want to do ? \nAdd a new pixel for today: type 'add'. \nUpdate a pixel: type 'update'. \nDelete a pixel: type 'delete'. \nExit: type 'exit'. \n--> ").lower()
     if action == "add":
         add_pixel()
     elif action == "update":
