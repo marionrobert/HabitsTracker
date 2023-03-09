@@ -59,5 +59,13 @@ UPDATE_PIXEL_PARAMS = {
     "quantity": new_minutes,
 }
 
-response = requests.put(url=UPDATE_PIXEL_ENDPOINT, json=UPDATE_PIXEL_PARAMS, headers=PIXELA_HEADERS)
+# response = requests.put(url=UPDATE_PIXEL_ENDPOINT, json=UPDATE_PIXEL_PARAMS, headers=PIXELA_HEADERS)
+# print(response.text)
+
+
+# ____ ADD PIXEL ON  A GRAPH _____
+date = today
+DELETE_PIXEL_ENDPOINT = f"{GRAPH_ENDPOINT}/{GRAPH_NAME}/{date}"
+
+response = requests.delete(url=DELETE_PIXEL_ENDPOINT, headers=PIXELA_HEADERS)
 print(response.text)
