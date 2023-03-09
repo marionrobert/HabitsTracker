@@ -37,35 +37,49 @@ PIXELA_HEADERS = {
 
 
 # ____ ADD PIXEL ON  A GRAPH _____
-today = (datetime.date.today()).strftime("%Y%m%d")
-minutes = "11"
-PIXEL_ENDPOINT = f"{GRAPH_ENDPOINT}/{GRAPH_NAME}"
-PIXEL_PARAMS = {
-    "date": today,
-    "quantity": minutes,
-}
-
-# response = requests.post(url=PIXEL_ENDPOINT, json=PIXEL_PARAMS, headers=PIXELA_HEADERS)
-# print(response.text)
-# check the graph on : https://pixe.la/v1/users/marionroro/graphs/graph1.html
-
+def add_pixel():
+    today = (datetime.date.today()).strftime("%Y%m%d")
+    PIXEL_ENDPOINT = f"{GRAPH_ENDPOINT}/{GRAPH_NAME}"
+    PIXEL_PARAMS = {
+        "date": today,
+        "quantity": input("How many minutes did you meditate today? "),
+    }
+    add_response = requests.post(url=PIXEL_ENDPOINT, json=PIXEL_PARAMS, headers=PIXELA_HEADERS)
+    print(add_response.text)
+    # check the graph on : https://pixe.la/v1/users/marionroro/graphs/graph1.html
 
 
 #  ____ update pixel on a graph  _____
-date = today
-new_minutes = "15"
-UPDATE_PIXEL_ENDPOINT = f"{GRAPH_ENDPOINT}/{GRAPH_NAME}/{date}"
-UPDATE_PIXEL_PARAMS = {
-    "quantity": new_minutes,
-}
-
-# response = requests.put(url=UPDATE_PIXEL_ENDPOINT, json=UPDATE_PIXEL_PARAMS, headers=PIXELA_HEADERS)
-# print(response.text)
+def update_pixel():
+    update_date = input("For which day do you want to update the pixel? Please, respect this format: yyyyMMdd. ")
+    new_minutes = input("How many minutes did you meditate this day? ")
+    UPDATE_PIXEL_ENDPOINT = f"{GRAPH_ENDPOINT}/{GRAPH_NAME}/{update_date}"
+    UPDATE_PIXEL_PARAMS = {
+        "quantity": new_minutes,
+    }
+    response = requests.put(url=UPDATE_PIXEL_ENDPOINT, json=UPDATE_PIXEL_PARAMS, headers=PIXELA_HEADERS)
+    print(response.text)
 
 
 # ____ ADD PIXEL ON  A GRAPH _____
-date = today
-DELETE_PIXEL_ENDPOINT = f"{GRAPH_ENDPOINT}/{GRAPH_NAME}/{date}"
+def delete_pixel():
+    delete_date = input("For which day do you want to delete the pixel? Please, respect this format: yyyyMMdd. ")
+    DELETE_PIXEL_ENDPOINT = f"{GRAPH_ENDPOINT}/{GRAPH_NAME}/{delete_date}"
+    delete_response = requests.delete(url=DELETE_PIXEL_ENDPOINT, headers=PIXELA_HEADERS)
+    print(delete_response.text)
 
-response = requests.delete(url=DELETE_PIXEL_ENDPOINT, headers=PIXELA_HEADERS)
-print(response.text)
+
+
+app_on = True
+
+while app_on:
+    action = input("What action do you want to do ? \nAdd a new pixel for today: type 'add'. \nUpdate a pixel: type 'update'. \nDelete a pixel: type 'delete'.\n --> ").lower()
+    if action == "add":
+        add_pixel()
+    elif action == "update":
+        update_pixel()
+    elif action == "delete":
+        delete_pixel()
+    elif action == "exit":
+        app_on = False
+        print("Bye bye!")
