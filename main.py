@@ -48,7 +48,7 @@ def add_pixel():
     }
     add_response = requests.post(url=PIXEL_ENDPOINT, json=PIXEL_PARAMS, headers=PIXELA_HEADERS)
     print(add_response.text)
-    # check the graph on : https://pixe.la/v1/users/marionroro/graphs/graph1.html
+    # check your graph on PIXEL_ENDPOINT
 
 
 #  ____ update pixel on a graph  _____
