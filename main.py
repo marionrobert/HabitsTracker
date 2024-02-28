@@ -14,6 +14,7 @@ PIXELA_API_PARAMS = {
     "notMinor": "yes"
 }
 
+# execute once to create the account and then comment the lines
 # response = requests.post(url=PIXELA_API_ENDPOINT, json=PIXELA_API_PARAMS)
 # print(response.text)
 
