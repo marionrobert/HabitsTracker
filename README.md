@@ -1,4 +1,4 @@
-# Suivi de la Méditation avec Pixela API
+# Suivi d'une activité avec Pixela API
 
 ## Présentation
 Ce projet vise à suivre le temps de méditation quotidien à l'aide de l'API Pixela. Il permet à l'utilisateur d'enregistrer, de mettre à jour et de supprimer les données de méditation sur un graphique hébergé sur Pixela. L'application est réalisée en utilisant des requêtes HTTP avec la bibliothèque Requests de Python.
