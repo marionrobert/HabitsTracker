@@ -33,6 +33,7 @@ PIXELA_HEADERS = {
     "X-USER-TOKEN": token
 }
 
+# execute once to create the graph and then comment the lines
 # response = requests.post(url=GRAPH_ENDPOINT, json=GRAPH_PARAMS, headers=PIXELA_HEADERS)
 # print(response.text)
 
